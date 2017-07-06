@@ -1,0 +1,8 @@
+{
+    "version": "0.1.0",
+    "command": "g++",
+    "isShellCommand": true,
+    "args": ["Main.cpp", "Define.cpp", "Engine.cpp", "MonteCarlo.cpp", "SetScore.cpp"],
+    "isBuildCommand": true,
+    "showOutput": "always"
+}
