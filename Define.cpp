@@ -8,6 +8,7 @@ char		board[GRID_NUM][GRID_NUM];		//棋盘表示
 char		board_know[GRID_NUM][GRID_NUM]; //试探棋盘
 int			mark[GRID_NUM][GRID_NUM];		//MonteCarlo分数棋盘
 char		chessColor;					//自己棋的颜色
+char		opponentColor;				//对方棋的颜色
 SMove		bestMove ;						//最优棋
 
 int boardBaseScore[GRID_NUM][GRID_NUM] = 			//棋盘的基础分数

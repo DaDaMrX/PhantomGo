@@ -42,6 +42,7 @@ extern char		board[GRID_NUM][GRID_NUM];		//棋盘表示
 extern char		board_know[GRID_NUM][GRID_NUM]; //试探棋盘
 //extern int		mark[GRID_NUM][GRID_NUM];		//MonteCarlo分数棋盘
 extern char		chessColor;						//自己棋的颜色
+extern char		opponentColor;					//对方棋的颜色
 extern SMove	bestMove;						//最优棋
 
 extern			SPlayer player[3];				//白和黑棋,记录各方的走子总数和知道对方的子数
