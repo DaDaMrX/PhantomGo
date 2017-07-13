@@ -6,7 +6,7 @@
 #include <string.h>
 #include <time.h>
 #include <windows.h>
-
+#include<fstream>
 
 #define GRID_NUM 11			//棋盘行数，其中1..9为棋的坐标，其他为边界
 #define GRID_COUNT 81		//可放棋子总数
