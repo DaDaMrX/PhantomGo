@@ -15,7 +15,7 @@
 #define BORDER	3			//边界
 #define NOSTONE 	0		//空子无棋
 
-#define MCMAX		 5000	//蒙特卡洛次数
+#define MCMAX		 1000	//蒙特卡洛次数
 #define believePoint 2000		//信任值
 
 typedef struct _stoneposition
@@ -52,6 +52,10 @@ extern int boardBaseScore[GRID_NUM][GRID_NUM];
 void 	InitGame();
 void	record();
 void	Undo();
+
+void move();
+void moveSucceed();
+void moveFail();
 
 void PrintBoard();
 

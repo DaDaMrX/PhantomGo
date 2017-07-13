@@ -1,0 +1,80 @@
+Step History
+------------------------------------
+Black: EF
+    White: HF
+Black: EE
+    White: BF
+Black: ED
+    White: GG
+Black: DD
+    White: IF
+Black: CD
+    White: IA
+Black: EG
+    White: AD
+Black: FD
+    White: GD
+Black: BD
+    White: DA
+Black: DG
+    White: GI
+Black: CG
+    White: DB
+Black: BG
+    White: AG OK
+Black: FC
+    White: EB RF
+Black: FB
+    White: FI
+Black: FG
+    White: DI
+Black: BC
+    White: AH
+Black: BB
+    White: FF RF
+Black: BH
+    White: GB
+Black: FH
+    White: AA
+Black: BE
+    White: DE
+Black: CB
+    White: HB RF
+Black: DH
+    White: AE RF
+Black: BI
+    White: FE
+Black: FA
+    White: HG
+Black: GH
+    White: EA RF
+Black: HH
+    White: DC
+Black: IH
+    White: HD
+Black: AB
+    White: IC
+Black: CA
+    White: CI
+Black: CF
+    White: GF
+Black: HI
+    White: AI RF RF
+Black: GC
+    White: CE
+Black: HC
+    White: GE RF
+Black: AF take white! BF AG AH AI
+    White: GA RF
+Black: AH
+    White: IG RF
+Black: CC
+    White: ID
+Black: EC take white DA DB DC EA EB
+    White: IE AC
+Black: CH
+    White: EB RF
+Black: DA
+    White: IB
+Black: EA
+    White: DB

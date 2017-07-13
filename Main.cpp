@@ -23,59 +23,50 @@ int main()
 		fflush(stdout);
 		scanf("%s",msg);
 
-		if (strcmp(msg, "accept") == 0) //己方提交着法被接受
+		if (strcmp(msg, "accept") == 0)
 		{
-			record();
-			player[chessColor].total++;
-			board[bestMove.x][bestMove.y] = chessColor;
-			clean(bestMove, opponentColor, board);
-		}else if (strcmp(msg, "refuse") == 0) //己方提交着法被接受
+			fflush(stdin);
+			moveSucceed();
+		}else if (strcmp(msg, "refuse") == 0)
 		{
-			player[chessColor].know++;
-			board[bestMove.x][bestMove.y] = opponentColor;
-			board_know[bestMove.x][bestMove.y] ++;
-			if (SearchMove(&bestMove))
-			{
-				printf("move %c%c\n",bestMove.x + 'A' - 1, bestMove.y + 'A' - 1);
-			}else
-			{
-				printf("passed\n");
-			}
-		}else if (strcmp(msg, "move") == 0) //己方提交着法被拒绝
+			fflush(stdin);
+			moveFail();
+			move();
+		}else if (strcmp(msg, "move") == 0)
 		{
-			if (player[opponentColor].know < player[chessColor].total) 
-				player[opponentColor].total++;
-			if (SearchMove(&bestMove))
-			{
-				printf("move %c%c\n",bestMove.x + 'A' - 1, bestMove.y + 'A' - 1);
-			}else
-			{
-				printf("passed\n");
-			}
-		}else if (strcmp(msg, "take") == 0) //己方提子
+			scanf("%s",msg); // Read "go"
+			fflush(stdin);
+			player[opponentColor].total++;
+			move();
+		}else if (strcmp(msg, "access") == 0) //己方提子
 		{
-			SMove moveList[81] ;
+
+			scanf("%s",msg); // Read "take"
 			scanf("%d%s",&numTi, msg);
+			fflush(stdin);
 			player[opponentColor].total -= numTi;
+			//SMove moveList[81];
 			for(int i = 0 ; i < numTi ; i++)
 			{
-				moveList[i].x = msg[2 * i] - 'A' + 1;
-				moveList[i].y = msg[2 * i + 1] - 'A' + 1;
-			}
-			for(int i = 0 ; i < numTi ; i++)
-			{
-				board[moveList[i].x][moveList[i].y] = NOSTONE;
+				// moveList[i].x = msg[2 * i] - 'A' + 1;
+				// moveList[i].y = msg[2 * i + 1] - 'A' + 1;
+				// board[moveList[i].x][moveList[i].y] = NOSTONE;
+				char x = msg[2 * i] - 'A' + 1;
+				char y = msg[2 * i + 1] - 'A' + 1;
+				board[x][y] = NOSTONE;
 			}
 		}else if (strcmp(msg, "taked") == 0) //对方提子
 		{
-			SMove moveList[81] ;
 			scanf("%d%s",&numTi, msg);
 			player[chessColor].total -= numTi;
-			//读取自己所有被提的子
+			//SMove moveList[81] ;
 			for(int i = 0 ; i < numTi ; i++)
 			{
-				x = moveList[i].x = msg[2 * i] - 'A' + 1;
-				y = moveList[i].y = msg[2 * i + 1] - 'A' + 1;
+				// x = moveList[i].x = msg[2 * i] - 'A' + 1;
+				// y = moveList[i].y = msg[2 * i + 1] - 'A' + 1;
+				char x = msg[2 * i] - 'A' + 1;
+				char y = msg[2 * i + 1] - 'A' + 1;
+				board[x][y] = NOSTONE;
 				
 				//对所提的子的边界进行探测，如果是空，肯定是对方的子
 				if (board[x-1][y] == NOSTONE)
@@ -99,33 +90,29 @@ int main()
 					player[chessColor].know++;
 				}
 			}
-			for(int i = 0 ; i < numTi ; i++)
-			{
-				board[moveList[i].x][moveList[i].y] = NOSTONE;
-			}
 		}else if (strcmp(msg,"name?") == 0)
 		{
 			fflush(stdin);
 			printf("name BIT\n");
+			fflush(stdout);
 		}else if (strcmp(msg,"end") == 0)
 		{
-			//对局结束
 			break;
 		}else if (strcmp(msg,"quit") == 0)
 		{
-			//结束游戏
 			break;
 		}else if (strcmp(msg,"new") == 0)
 		{
-			//开始新棋局
 			InitGame();
 			scanf("%s",msg);
+			fflush(stdin);
 			if (strcmp(msg,"black") == 0)
 			{
 				chessColor = BLACK;
 				opponentColor = WHITE;
 				SearchMove(&bestMove);
 				printf("move %c%c\n",bestMove.x + 'A' - 1, bestMove.y + 'A' - 1);
+				fflush(stdout);
 			}else
 			{
 				chessColor = WHITE;
@@ -139,6 +126,33 @@ int main()
 	}
 
 	return 0;
+}
+
+void move()
+{
+	if (SearchMove(&bestMove))
+	{
+		printf("move %c%c\n",bestMove.x + 'A' - 1, bestMove.y + 'A' - 1);
+	}
+	else
+	{
+		printf("move pass\n");
+	}
+	fflush(stdout);
+}
+
+void moveSucceed()
+{
+	player[chessColor].total++;
+	board[bestMove.x][bestMove.y] = chessColor;
+	clean(bestMove, opponentColor, board);
+}
+
+void moveFail()
+{
+	player[chessColor].know++;
+	board[bestMove.x][bestMove.y] = opponentColor;
+	board_know[bestMove.x][bestMove.y]++;
 }
 
 void record()
